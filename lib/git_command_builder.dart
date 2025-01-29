@@ -32,6 +32,11 @@ class GitCommandBuilder {
 
     sb.write(": ");
     message = message ?? _getMessage();
+
+    if (message.split(" ").first.toLowerCase() == commitType.name.toLowerCase()) {
+      message = message.split(" ").skip(1).join(" ");
+    }
+
     sb.write(message.replaceRange(0, 1, message[0].toLowerCase()));
 
     return sb.toString();
