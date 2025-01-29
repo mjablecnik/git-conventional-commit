@@ -24,7 +24,7 @@ class AppInfo {
 
   bool get gitScopeFileExists => _projectRoot(file: gitScopeFileName) != null;
 
-  String get version => "1.0.0";
+  String get version => "1.0.1";
 
   String get name => "git_conventional_commit";
 }
