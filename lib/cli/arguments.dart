@@ -42,14 +42,14 @@ class CliArguments extends Arguments {
     required this.isBreakingChange,
     this.commitType,
     this.commitScope,
-    this.commitMessage,
+    this.userMessage,
   });
 
   final bool amend;
   final bool isBreakingChange;
   final String? commitType;
   final String? commitScope;
-  final String? commitMessage;
+  final String? userMessage;
 
   static CliArguments parse(List<String> arguments, List<Command> commands) {
     final results = ArgumentParser(commands).parse(arguments);
@@ -61,7 +61,7 @@ class CliArguments extends Arguments {
       isBreakingChange: results.wasParsed("breaking"),
       commitType: Arguments.getOptionOrNull(results, option: "type"),
       commitScope: Arguments.getOptionOrNull(results, option: "scope"),
-      commitMessage: Arguments.getOptionOrNull(results, option: "message"),
+      userMessage: Arguments.getOptionOrNull(results, option: "message"),
     );
   }
 }

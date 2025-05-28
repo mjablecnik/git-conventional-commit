@@ -4,8 +4,8 @@ import 'package:cli_menu/cli_menu.dart';
 import 'package:git_conventional_commit/cli/app_info.dart';
 import 'package:git_conventional_commit/builder/commit_type.dart';
 
-class GitCommandBuilder {
-  String buildCommitMessage({String? type, String? message, String? scope, required bool isBreaking}) {
+class GitCommitMessageBuilder {
+  String build({String? type, String? message, String? scope, required bool isBreaking}) {
     final sb = StringBuffer();
 
     if (!_isConventionalCommit) return message ?? _getMessage();

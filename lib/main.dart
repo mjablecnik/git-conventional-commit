@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:git_conventional_commit/cli/arguments.dart';
-import 'package:git_conventional_commit/builder/git_command_builder.dart';
+import 'package:git_conventional_commit/builder/git_commit_message_builder.dart';
 import 'package:vader_console/vader_console.dart';
 
 
@@ -18,9 +18,9 @@ void main(List<String> args) {
       if (args.amend) {
         gitArgs = ['commit', '--amend'];
       } else {
-        commitMessage = GitCommandBuilder().buildCommitMessage(
+        commitMessage = GitCommitMessageBuilder().build(
           type: args.commitType,
-          message: args.commitMessage,
+          message: args.userMessage,
           scope: args.commitScope,
           isBreaking: args.isBreakingChange,
         );
@@ -36,5 +36,4 @@ void main(List<String> args) {
       print("\nNew commit was written: \"$commitMessage\"");
     },
   );
-
 }
