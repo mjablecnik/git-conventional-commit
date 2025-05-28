@@ -1,0 +1,20 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build program
+    cmds:
+      - |
+        app_name=git-conventional-commit
+        app_version=$(grep -E '^version:' pubspec.yaml | sed 's/version: //')
+        app_description=$(grep -E '^description:' pubspec.yaml | sed 's/description: //')
+        dart compile exe lib/main.dart \
+          -D name="$app_name" \
+          -D version="$app_version" \
+          -D description="$app_description" \
+          -o "bin/$app_name"
+
+  install:
+    desc: Install program
+    cmd: cp bin/git-conventional-commit ~/.local/bin/
+    deps: [build]
