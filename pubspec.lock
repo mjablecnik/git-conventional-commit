@@ -58,7 +58,7 @@ packages:
     source: hosted
     version: "0.2.0"
   cli_menu:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: cli_menu
       sha256: "8e2ad533d6fa657bf944d943b948862f2c0cfcf1fa6568be9b65eef5573394bf"

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cli_menu/cli_menu.dart';
-import 'package:git_conventional_commit/cli/app_info.dart';
+import 'package:git_conventional_commit/console/app_info.dart';
 import 'package:git_conventional_commit/builder/commit_type.dart';
 
 class GitCommitMessageBuilder {
