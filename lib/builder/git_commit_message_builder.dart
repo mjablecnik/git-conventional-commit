@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cli_menu/cli_menu.dart';
 import 'package:git_conventional_commit/console/app_info.dart';
 import 'package:git_conventional_commit/builder/commit_type.dart';
+import 'package:git_conventional_commit/utils.dart';
 
 class GitCommitMessageBuilder {
   String build({String? type, String? message, String? scope, required bool isBreaking}) {
@@ -67,21 +68,13 @@ class GitCommitMessageBuilder {
     }
   }
 
-  bool _getBreakingChange() {
-    stdout.write("\nHas this commit some breaking change? (y/N) ");
-    final response = stdin.readLineSync();
-    return response?.toLowerCase() == 'yes' || response == 'Y' || response == 'y';
-  }
-
   bool get _isConventionalCommit {
     return AppInfo().gitScopeFileExists ? true : _getConventionalQuestion();
   }
 
-  bool _getConventionalQuestion() {
-    stdout.write("\nDo you really want to create conventional commit? (y/N) ");
-    final response = stdin.readLineSync();
-    return response?.toLowerCase() == 'yes' || response == 'Y' || response == 'y';
-  }
+  bool _getBreakingChange() => showQuestion("Has this commit some breaking change?");
+
+  bool _getConventionalQuestion() => showQuestion("Do you really want to create conventional commit?");
 
   CommitType _getType() {
     print('\nSelect collection of type:');
