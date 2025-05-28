@@ -10,10 +10,9 @@ class GitCommitClient {
   List<String> gitArgs = [];
   String commitMessage = "";
 
-  bool generate(GitCommit commit) {
+  void generate(GitCommit commit) {
     if (commit.amend) {
       gitArgs = ['commit', '--amend'];
-      return true;
     } else {
       commitMessage = GitCommitMessageBuilder().build(
         type: commit.type,
@@ -22,7 +21,6 @@ class GitCommitClient {
         isBreaking: commit.isBreaking,
       );
       gitArgs = ['commit', '-m', commitMessage];
-      return _confirmCommitMessage();
     }
   }
 
