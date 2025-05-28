@@ -3,12 +3,12 @@ description: Simple command for create your conventional commits
 version: 1.0.1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.8.0 <4.0.0'
 
 dependencies:
   args: ^2.4.2
   cli_menu: ^0.4.0+1
 
 dev_dependencies:
-  lints: ^4.0.0
+  lints: ^6.0.0
   test: ^1.24.0
