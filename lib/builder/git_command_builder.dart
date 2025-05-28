@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:cli_menu/cli_menu.dart';
-import 'package:git_conventional_commit/app_info.dart';
-import 'package:git_conventional_commit/commit_type.dart';
+import 'package:git_conventional_commit/cli/app_info.dart';
+import 'package:git_conventional_commit/builder/commit_type.dart';
 
 class GitCommandBuilder {
   String buildCommitMessage({String? type, String? message, String? scope, required bool isBreaking}) {

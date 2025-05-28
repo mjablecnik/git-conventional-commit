@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:git_conventional_commit/app_info.dart';
-import 'package:git_conventional_commit/arguments.dart';
-import 'package:git_conventional_commit/git_command_builder.dart';
+import 'package:git_conventional_commit/cli/arguments.dart';
+import 'package:git_conventional_commit/builder/git_command_builder.dart';
 import 'package:vader_console/vader_console.dart';
 
-import 'args_parser.dart';
 
 void main(List<String> args) {
   runCliApp(
