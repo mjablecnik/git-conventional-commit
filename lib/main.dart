@@ -1,20 +1,22 @@
 import 'dart:io';
 
 import 'package:git_conventional_commit/app_info.dart';
+import 'package:git_conventional_commit/arguments.dart';
 import 'package:git_conventional_commit/git_command_builder.dart';
+import 'package:vader_console/vader_console.dart';
 
 import 'args_parser.dart';
 
 void main(List<String> args) {
-  Arguments.parse(args).then((args) async {
-    if (args.showHelp) {
-      showHelp();
-    } else if (args.showVersion) {
-      print("Version: ${AppInfo().version}");
-    } else {
+  runCliApp(
+    arguments: args,
+    commands: commands,
+    parser: CliArguments.parse,
+    app: (args) async {
       final List<String> gitArgs;
       String commitMessage = "";
 
+      // Generate git command
       if (args.amend) {
         gitArgs = ['commit', '--amend'];
       } else {
@@ -29,27 +31,12 @@ void main(List<String> args) {
 
       print('');
 
+      // Run generated git command
       final p = await Process.start('git', gitArgs);
       await stdout.addStream(p.stdout);
 
       print("\nNew commit was written: \"$commitMessage\"");
+    },
+  );
 
-      exit(0);
-    }
-  }, onError: (error) {
-    try {
-      print(error.message);
-      showHelp();
-    } catch (e) {
-      print("$error\n");
-      stdout.write(error.stackTrace);
-    } finally {
-      exit(1);
-    }
-  });
-}
-
-showHelp() {
-  print("\nUsage:");
-  print(Arguments.usage);
 }
