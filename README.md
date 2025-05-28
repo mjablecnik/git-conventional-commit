@@ -50,10 +50,10 @@ dart lib/main.dart [options]
 ### AI Commit Message Generation
 
 If you do not provide a commit message (`-m`/`--message`), the tool can generate a conventional commit message for you using OpenAI's ChatGPT.  
-To enable this feature, create a `.env` file in the project root with your OpenAI API key:
+To enable this feature, set the `OPENAI_API_KEY` environment variable with your OpenAI API key, for example (macOS/Linux):
 
-```
-OPENAI_API_KEY=sk-...
+```sh
+export OPENAI_API_KEY=sk-...
 ```
 
 - The tool uses the `gpt-4.1` model by default.

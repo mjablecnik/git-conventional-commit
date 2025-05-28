@@ -1,10 +1,8 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:dotenv/dotenv.dart';
 import 'package:git_conventional_commit/client/ai_client.dart';
 
 class ChatGptClient implements AiClient {
-  static final DotEnv env = DotEnv()..load();
-
   final Dio _dio;
   final String _apiKey;
   final String _apiUrl;
@@ -12,9 +10,9 @@ class ChatGptClient implements AiClient {
   ChatGptClient({String? apiUrl})
     : _dio = Dio(),
       _apiUrl = apiUrl ?? 'https://api.openai.com/v1/chat/completions',
-      _apiKey = env['OPENAI_API_KEY'] ?? '' {
+      _apiKey = Platform.environment['OPENAI_API_KEY'] ?? '' {
     if (_apiKey.isEmpty) {
-      throw Exception('OPENAI_API_KEY not found in .env file.');
+      throw Exception('OPENAI_API_KEY not found in environment variables.');
     }
     _dio.options.headers['Authorization'] = 'Bearer $_apiKey';
     _dio.options.headers['Content-Type'] = 'application/json';
@@ -47,9 +45,4 @@ class ChatGptClient implements AiClient {
     }
   }
 
-  /// Loads environment variables from the .env file.
-  /// Call this before using the client, e.g. in main().
-  static void loadEnv() {
-    env.load();
-  }
 }
