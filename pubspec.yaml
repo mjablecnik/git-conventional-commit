@@ -7,6 +7,7 @@ environment:
 
 dependencies:
   vader_console: ^1.0.0-dev.2
+  ai_clients: ^0.2.0
   cli_menu: ^0.4.0+1
   dio: ^5.8.0+1
 
