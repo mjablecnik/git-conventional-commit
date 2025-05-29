@@ -1,6 +1,6 @@
 name: git_conventional_commit
 description: Simple command for create your conventional commits
-version: 1.2.1
+version: 1.3.0
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
