@@ -34,6 +34,7 @@ class GitCommitClient {
       prompt:
           'Vytvoř commit message v angličtině pro následující změny v gitu. '
           'Řiď se pravidly Conventional Commits. '
+          'Vrať pouze a jenom commit message. '
           'Používej následující typy commitů: $rules.',
       context: diff,
     );
