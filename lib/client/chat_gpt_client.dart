@@ -9,11 +9,12 @@ class ChatGptClient implements AiClient {
 
   ChatGptClient({String? apiUrl, String? apiKey})
     : _dio = Dio(),
-      _apiUrl = apiUrl ?? 'https://api.openai.com/v1/chat/completions',
+      _apiUrl = apiUrl ?? 'https://api.openai.com/v1',
       _apiKey = apiKey ?? Platform.environment['OPENAI_API_KEY'] ?? '' {
     if (_apiKey.isEmpty) {
       throw Exception('OPENAI_API_KEY not found in environment variables.');
     }
+    _dio.options.baseUrl = _apiUrl;
     _dio.options.headers['Authorization'] = 'Bearer $_apiKey';
     _dio.options.headers['Content-Type'] = 'application/json';
   }
@@ -33,7 +34,7 @@ class ChatGptClient implements AiClient {
     };
 
     try {
-      final response = await _dio.post(_apiUrl, data: data);
+      final response = await _dio.post('/chat/completions', data: data);
       final choices = response.data['choices'];
       if (choices != null && choices.isNotEmpty) {
         return choices[0]['message']['content'] as String;
