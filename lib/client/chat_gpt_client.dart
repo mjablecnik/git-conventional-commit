@@ -7,10 +7,10 @@ class ChatGptClient implements AiClient {
   final String _apiKey;
   final String _apiUrl;
 
-  ChatGptClient({String? apiUrl})
+  ChatGptClient({String? apiUrl, String? apiKey})
     : _dio = Dio(),
       _apiUrl = apiUrl ?? 'https://api.openai.com/v1/chat/completions',
-      _apiKey = Platform.environment['OPENAI_API_KEY'] ?? '' {
+      _apiKey = apiKey ?? Platform.environment['OPENAI_API_KEY'] ?? '' {
     if (_apiKey.isEmpty) {
       throw Exception('OPENAI_API_KEY not found in environment variables.');
     }
@@ -28,7 +28,7 @@ class ChatGptClient implements AiClient {
       'model': model,
       'messages': [
         if (system != null) {'role': 'developer', 'content': system},
-        {'role': 'user', 'content': prompt+contextMessage},
+        {'role': 'user', 'content': prompt + contextMessage},
       ],
     };
 
@@ -44,5 +44,4 @@ class ChatGptClient implements AiClient {
       throw Exception('Failed to fetch response: ${e.response?.data ?? e.message}');
     }
   }
-
 }
