@@ -1,4 +1,5 @@
 import 'package:git_conventional_commit/client/baseten_client.dart';
+import 'package:git_conventional_commit/client/together_client.dart';
 import 'package:git_conventional_commit/console/arguments.dart';
 import 'package:git_conventional_commit/client/git_commit_client.dart';
 import 'package:git_conventional_commit/client/git_commit.dart';
@@ -23,7 +24,7 @@ void main(List<String> args) {
 
       // Setup clients
       final gitClient = GitCommitClient();
-      final aiClient = BasetenClient();
+      final aiClient = TogetherClient();
       bool isGenerated = false;
 
       // Generate git message with AI
