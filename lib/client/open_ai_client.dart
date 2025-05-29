@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:git_conventional_commit/client/ai_client.dart';
 
-class ChatGptClient implements AiClient {
+class OpenAiClient implements AiClient {
   final Dio _dio;
   final String _apiKey;
   final String _apiUrl;
 
-  ChatGptClient({String? apiUrl, String? apiKey})
+  OpenAiClient({String? apiUrl, String? apiKey})
     : _dio = Dio(),
       _apiUrl = apiUrl ?? 'https://api.openai.com/v1',
       _apiKey = apiKey ?? Platform.environment['OPENAI_API_KEY'] ?? '' {
