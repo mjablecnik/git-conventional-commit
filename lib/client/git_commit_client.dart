@@ -4,6 +4,7 @@ import 'package:ai_clients/ai_clients.dart';
 import 'package:git_conventional_commit/builder/commit_type.dart';
 import 'package:git_conventional_commit/builder/git_commit_message_builder.dart';
 import 'package:git_conventional_commit/client/git_commit.dart';
+import 'package:git_conventional_commit/client/git_commit_agent.dart';
 import 'package:git_conventional_commit/utils.dart';
 
 class GitCommitClient {
@@ -25,19 +26,8 @@ class GitCommitClient {
   }
 
   Future<bool> generateWithAi(AiClient aiClient) async {
-    final diff = await getDiff();
-
-    final rules = CommitType.values.map((e) => '${e.name} (${e.description})').join(", ");
-
-    commitMessage = await aiClient.query(
-      system: 'Jsi zkušený vývojář co umí pracovat s gitem',
-      prompt:
-          'Vytvoř commit message v angličtině pro následující změny v gitu. '
-          'Řiď se pravidly Conventional Commits. '
-          'Vrať pouze a jenom commit message. '
-          'Používej následující typy commitů: $rules.',
-      context: diff,
-    );
+    final agent = GitCommitAgent(client: aiClient);
+    commitMessage = await agent.getCommit(await getDiff());
 
     return _confirmCommitMessage();
   }
