@@ -13,10 +13,10 @@ packages:
     dependency: "direct main"
     description:
       name: ai_clients
-      sha256: "8846bc4ab52d2c12f732a90a166e149f44fa3d08278eff515bc59cd3b3d9e8a0"
+      sha256: bef97e2d262e6aecec9fb9dd439d7026126eb3eb76ec738925409433aaa86e4e
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.5.0"
   analyzer:
     dependency: transitive
     description:
