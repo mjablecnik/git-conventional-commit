@@ -1,6 +1,6 @@
 import 'package:git_conventional_commit/console/arguments.dart';
-import 'package:git_conventional_commit/client/git_commit_client.dart';
-import 'package:git_conventional_commit/client/git_commit.dart';
+import 'package:git_conventional_commit/git_commit/git_commit_client.dart';
+import 'package:git_conventional_commit/git_commit/git_commit_model.dart';
 import 'package:git_conventional_commit/utils.dart';
 import 'package:vader_console/vader_console.dart';
 import 'package:ai_clients/ai_clients.dart';

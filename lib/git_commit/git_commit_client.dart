@@ -1,10 +1,9 @@
 import 'dart:io';
 import 'package:ai_clients/ai_clients.dart';
 
-import 'package:git_conventional_commit/builder/commit_type.dart';
 import 'package:git_conventional_commit/builder/git_commit_message_builder.dart';
-import 'package:git_conventional_commit/client/git_commit.dart';
-import 'package:git_conventional_commit/client/git_commit_agent.dart';
+import 'package:git_conventional_commit/git_commit/git_commit_model.dart';
+import 'package:git_conventional_commit/git_commit/git_commit_agent.dart';
 import 'package:git_conventional_commit/utils.dart';
 
 class GitCommitClient {
