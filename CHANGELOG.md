@@ -1,3 +1,10 @@
+## Unreleased
+
+- Feature: Introduce GitCommitAgent to handle commit message creation based on git diff output
+- Refactor: Restructure git commit related classes into separate module
+- Refactor: Simplify generateWithAi method by introducing GitCommitAgent
+- Dependency: Update ai_clients dependency to version 0.5.0
+
 ## 1.4.1
 
 - Refactor: Simplify AI client implementation by using the `ai_clients` package
