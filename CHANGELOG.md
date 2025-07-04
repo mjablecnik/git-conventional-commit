@@ -1,4 +1,4 @@
-## Unreleased
+## 1.5.0
 
 - Feature: Introduce GitCommitAgent to handle commit message creation based on git diff output
 - Refactor: Restructure git commit related classes into separate module
