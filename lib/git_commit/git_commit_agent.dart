@@ -1,6 +1,8 @@
 import 'package:ai_clients/ai_clients.dart';
 
 class GitCommitAgent {
+  const GitCommitAgent({required this.client});
+
   final AiClient client;
 
   final gitCommitPrompt = """
@@ -17,7 +19,6 @@ Rules:
 - The commit message should be in English.
   """;
 
-  GitCommitAgent({required this.client});
 
   Future<String> getCommit(String gitDiff) async {
     final result = await client.simpleQuery(
