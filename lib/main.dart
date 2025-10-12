@@ -23,7 +23,7 @@ void main(List<String> args) {
 
       // Setup clients
       final gitClient = GitCommitClient();
-      final aiClient = AiClients.baseten();
+      final aiClient = AiClients.openAi(model: 'gpt-4o-mini');
       bool isGenerated = false;
 
       // Generate git message with AI
