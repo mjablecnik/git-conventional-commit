@@ -14,7 +14,12 @@ tasks:
           -D description="$app_description" \
           -o "bin/$app_name"
 
-  install:
+  install-macos:
     desc: Install program
     cmd: cp bin/git-conventional-commit ~/.local/bin/
+    deps: [build]
+
+  install-linux:
+    desc: Install program
+    cmd: cp bin/git-conventional-commit ~/bin/
     deps: [build]
